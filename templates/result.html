@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Poké Info</title>
+
+    <style>
+        body {
+            background-image: url('https://cdn.wallpapersafari.com/31/98/1iNE4T.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; /* Adjust margin-top as needed */
+        }
+
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        table {
+            justify-content: center;
+            align-items: center;
+            width: 100%; 
+            height: 200px; 
+            margin-left: 200px;
+            max-width: 1000px; 
+            max-height: 300px; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container text-center mt-5">
+        <h1 class="mb-4">This is your Pokémon information 😃</h1>
+        <h3 class="mb-4">Remember your Pokémon can increase the ability ⚡️ if you get to know better of them 😧</h3>
+    </div>
+
+    <img src="{{poke['image']}}" alt="" height="200" width="200">
+
+
+    <table border="2">
+        <tr>
+            <th>Name</th>
+            <td>{{poke['name']}}</td>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <td>{{poke['id']}}</td>
+        </tr>
+        <tr>
+            <th>Height</th>
+            <td>{{poke['height']}}</td>
+        </tr>
+        <tr>
+            <th>Weight</th>
+            <td>{{poke['weight']}}</td>
+        </tr>
+    </table>
+
+    <div class="btn-container">
+        <a role="button" class="btn btn-success" href="/">Back</a>
+    </div>
+    
+
+</body>
+</html>

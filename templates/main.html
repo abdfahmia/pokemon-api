@@ -21,7 +21,6 @@
             align-items: center;
         }
 
-        /* Rest of your styles */
         .index-module__banner_background--wtuhu {
             display: flex;
             justify-content: center;
@@ -51,15 +50,12 @@
             border-radius: 5px;
             box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.5); /* 3D effect */
             transition: all 0.3s ease-in-out;
-
-
         }
 
         .btn-custom:hover {
             box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.5); /* Adjusted 3D effect on hover */
             transform: translateY(3px);
         }
-
     </style>
 </head>
 <body>
@@ -73,15 +69,37 @@
         </div>
     </div>
     <div class="container">
-        <form action="http://127.0.0.1:5000/result" method="POST">
+        <form action="http://127.0.0.1:5000/result" method="POST" onsubmit="return validateForm()">
             <div class="form-group">
-                <input type="text" name="poke" class="form-control" placeholder="Input pokemon name here">
+                <input type="text" id="pokeInput" name="poke" class="form-control" placeholder="Input pokemon name here" onkeyup="toggleButton()">
             </div>
-            <button type="submit" class="btn btn-custom">Search <i class="fa fa-search"></i></button>
+            <button type="submit" id="searchBtn" class="btn btn-custom" disabled>Search <i class="fa fa-search"></i></button>
         </form>
     </div>
 
-    <!-- Optional JavaScript; include it at the end of the document so the page loads faster -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleButton() {
+            var input = document.getElementById("pokeInput");
+            var button = document.getElementById("searchBtn");
+
+            if (input.value.trim() !== "") {
+                button.removeAttribute("disabled");
+            } else {
+                button.setAttribute("disabled", "disabled");
+            }
+        }
+
+        function validateForm() {
+            var input = document.getElementById("pokeInput");
+
+            if (input.value.trim() === "") {
+                alert("Please enter a pokemon name.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>
