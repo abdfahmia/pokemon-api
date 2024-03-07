@@ -18,8 +18,8 @@ jobs:
         with:
           languages: python
 
-      - name: Run CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
 
   docker-build:
     name: Docker Build and Push
