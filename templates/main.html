@@ -1,20 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pokémon Explorer</title>
 
-    <title>Poke - Explorer</title>
-  </head>
-  <body>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Background image styles */
+        body {
+            background-image: url('https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F07%2Fjapanese-theme-park-yomiuriland-pokemon-spotting-0000.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Rest of your styles */
+        .index-module__banner_background--wtuhu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh; 
+        }
+
+        .index-module__banner--1wNKW {
+            text-align: center;
+            color: white;
+            text-shadow: -1px -1px 0 #000,  
+                  1px -1px 0 #000,
+                 -1px  1px 0 #000,
+                  1px  1px 0 #000;
+        }
+
+        .index-module__logo_container--sUGNH img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .btn-custom {
+            background-color: green;
+            color: white; 
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.5); /* 3D effect */
+            transition: all 0.3s ease-in-out;
+
+
+        }
+
+        .btn-custom:hover {
+            box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.5); /* Adjusted 3D effect on hover */
+            transform: translateY(3px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="index-module__banner_background--wtuhu">
+        <div class="index-module__banner--1wNKW">
+            <div class="index-module__logo_container--sUGNH">
+                <img alt="PokéExplorer" src="https://static.wikia.nocookie.net/monster-master/images/a/a7/Poke_ball_by_peetzaahhh2010-d93nsv3.png">
+            </div>
+            <h2>Poké Explorer</h2>
+            <p><strong>Get to know your favorite pokemon's here</strong></p>
+        </div>
+    </div>
     <div class="container">
-        <form action= "http://127.0.0.1:5000/result" method="POST">
+        <form action="http://127.0.0.1:5000/result" method="POST">
             <div class="form-group">
                 <input type="text" name="poke" class="form-control" placeholder="Input pokemon name here">
             </div>
-            <button type="submit" class="btn btn-success">Search<i class="fa fa-search"></i></button>
-            </form>
+            <button type="submit" class="btn btn-custom">Search <i class="fa fa-search"></i></button>
+        </form>
     </div>
-  </body>
+
+    <!-- Optional JavaScript; include it at the end of the document so the page loads faster -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
