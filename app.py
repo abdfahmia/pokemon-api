@@ -1,16 +1,14 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, request
 
-# Inisialisasi aplikasi Flask
+# Initialization
 app = Flask(__name__)
 
-# Handler untuk route /hello
-@app.route('/hello')
-def hello():
-    # Membuat pesan JSON
-    message = {"message": "Hello, World!"}
-    # Mengembalikan pesan JSON
-    return jsonify(message)
+# Handler in main controller
+@app.route('/')
+def main():
+    return render_template('main.html')
 
-# Menjalankan aplikasi Flask
+
+# Run the Flask
 if __name__ == '__main__':
     app.run(debug=True)
