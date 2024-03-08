@@ -53,17 +53,21 @@
         }
 
 
-        .btn-success {
-            background-color: #28a745;
-            color: #fff;
+        .btn-custom {
+            background-color: green;
+            color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
-            text-decoration: none;
+            box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5);
+            /* 3D effect */
+            transition: all 0.3s ease-in-out;
         }
 
-        .btn-success:hover {
-            background-color: #218838;
+        .btn-custom:hover {
+            box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.5);
+            /* Adjusted 3D effect on hover */
+            transform: translateY(3px);
         }
 
         table {
@@ -108,7 +112,7 @@
     </table>
 
     <div class="btn-container">
-        <a role="button" class="btn btn-success" href="/">Back</a>
+        <a role="button" class="btn btn-custom" href="/">Back</a>
     </div>
     
 
