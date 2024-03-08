@@ -52,6 +52,16 @@
             transition: all 0.3s ease-in-out;
         }
 
+        .btn-custom2 {
+            background-color: orange;
+            color: white; 
+            border: none;
+            padding: 5px 5px;
+            border-radius: 5px;
+            box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.5); /* 3D effect */
+            transition: all 0.3s ease-in-out;
+        }
+
         .btn-custom:hover {
             box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.5); /* Adjusted 3D effect on hover */
             transform: translateY(3px);
@@ -93,6 +103,27 @@
 
         
     </style>
+
+<script>
+    function filterPokemons() {
+        var selectedType = document.querySelector(".type-filter").value;
+        var pokemons = document.querySelectorAll(".pokemon");
+
+        pokemons.forEach(function(pokemon) {
+            var type = pokemon.getAttribute("data-type");
+            if (selectedType === "" || type === selectedType) {
+                pokemon.style.display = "block";
+                
+                
+            } else {
+                pokemon.style.display = "none";
+            }
+        });
+    }
+</script>
+
+
+
 </head>
 <body>
 
@@ -105,6 +136,7 @@
             <h4><strong>Get to know your favorite pokemon's here</strong></h4>
         </div>
     </div>
+
     <div class="container">
         <form action="http://127.0.0.1:5000/result" method="POST" onsubmit="return validateForm()">
             <div class="form-group">
@@ -118,40 +150,47 @@
 
     <div class="container">
         <main>
-            <form id="pokemon-type-filter">
-                <select name="type" class="type-filter">
-                    <option value="">Types</option>
-                </select>
-                <input type="submit" value="Filter by Type"/>
-                
-                <button onClick="window.location.reload();">Reset</button>
-            </form>
+
+            <div class="container">
+                <form id="pokemon-type-filter">
+                    <select name="type" class="type-filter" onchange="filterPokemons()">
+                        <option value="">Types</option>
+                        <option value="water">water</option>
+                        <option value="fire">fire</option>
+                        <option value="wind">wind</option>
+                        <option value="earth">earth</option>
+                        <!-- {% for pokemon in pokemons %}
+                            <option value="{{ pokemon.type }}">{{ pokemon.type }}</option>
+                        {% endfor %} -->
+
+                    </select>
+                    <button class="btn btn-custom2" onClick="window.location.reload();">Clear Filter</button>
+                </form>
+            </div>
+            
             <section class="form-spacers"></section>
             <section id="pokedex">
-            </section>
-        </main>  
-    </div>
-
-    <br></br>
-
-    <div class="container">
-        <div class="row pokedex">
-            {% for i in range(number) %}
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 pokemon">
-                <div class="card pokemon">
-                    <img class="card-img-top" src="{{ pokemons[i].img_url }}" alt="pokemon">
-                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                        <h5 class="card-title">{{ pokemons[i].name }}</h5>
-                        <form action="http://127.0.0.1:5000/result" method="POST">
-                            <input type="hidden" name="poke" value="{{ pokemons[i].name }}">
-                            <button type="submit" class="btn btn-custom">See details<i class="fa fa-search"></i></button>
-                        </form>
-                        
+                <div class="container">
+                    <div class="row pokedex">
+                        {% for pokemon in pokemons %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 pokemon" data-type="{{ pokemon.type }}">
+                            <div class="card pokemon">
+                                <img class="card-img-top" src="{{ pokemon.img_url }}" alt="pokemon">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="card-title">{{ pokemon.name }}</h5>
+                                    <p>Type: {{ pokemon.type }}</p>
+                                    <form action="http://127.0.0.1:5000/result" method="POST">
+                                        <input type="hidden" name="poke" value="{{ pokemon.name }}">
+                                        <button type="submit" class="btn btn-custom">See details<i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </div>
-            {% endfor %}
-        </div>
+            </section>
+        </main>  
     </div>
     
 
