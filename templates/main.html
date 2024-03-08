@@ -139,17 +139,21 @@
             {% for i in range(number) %}
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 pokemon">
                 <div class="card pokemon">
-                    <img class="card-img-top" src="{{pokemons[i].img_url}}" alt="pokemon">
-                    <div class="card-body">
-                        <h5 class="card-title">{{pokemons[i].name}}</h5>
-                        <!-- You can add more details here if needed -->
+                    <img class="card-img-top" src="{{ pokemons[i].img_url }}" alt="pokemon">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <h5 class="card-title">{{ pokemons[i].name }}</h5>
+                        <form action="http://127.0.0.1:5000/result" method="POST">
+                            <input type="hidden" name="poke" value="{{ pokemons[i].name }}">
+                            <button type="submit" class="btn btn-custom">See details<i class="fa fa-search"></i></button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-    </div>    
-
+    </div>
+    
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
