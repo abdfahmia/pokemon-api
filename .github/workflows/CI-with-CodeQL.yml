@@ -13,13 +13,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          languages: python
+          python-version: '3.x'
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+      - name: Install CodeQL CLI
+        run: |
+          wget https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql-linux64.zip
+          unzip -qq codeql-linux64.zip -d codeql
+          export PATH=$(pwd)/codeql:$PATH
+
+      - name: Download CodeQL databases
+        run: |
+          codeql database create codeql-database --language=python
+
+      - name: Run CodeQL Analysis
+        run: |
+          codeql database analyze codeql-database --format=sarif-latest --output=codeql-analysis-results.sarif
 
   docker-build:
     name: Docker Build and Push
