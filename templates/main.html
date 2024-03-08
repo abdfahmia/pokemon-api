@@ -14,7 +14,7 @@
             background-image: url('https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F07%2Fjapanese-theme-park-yomiuriland-pokemon-spotting-0000.jpg'); 
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             height: 100vh;
             margin: 0;
             justify-content: center;
@@ -56,16 +56,53 @@
             box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.5); /* Adjusted 3D effect on hover */
             transform: translateY(3px);
         }
+
+        .pokemon {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9); /* Adjust the alpha value (last parameter) to change transparency */
+        }
+
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+
+        
     </style>
 </head>
 <body>
+
     <div class="index-module__banner_background--wtuhu">
         <div class="index-module__banner--1wNKW">
             <div class="index-module__logo_container--sUGNH">
                 <img alt="PokéExplorer" src="https://static.wikia.nocookie.net/monster-master/images/a/a7/Poke_ball_by_peetzaahhh2010-d93nsv3.png">
             </div>
-            <h2>Poké Explorer</h2>
-            <p><strong>Get to know your favorite pokemon's here</strong></p>
+            <h1>Poké Explorer</h1>
+            <h4><strong>Get to know your favorite pokemon's here</strong></h4>
         </div>
     </div>
     <div class="container">
@@ -76,6 +113,43 @@
             <button type="submit" id="searchBtn" class="btn btn-custom" disabled>Search <i class="fa fa-search"></i></button>
         </form>
     </div>
+
+    <br></br>
+
+    <div class="container">
+        <main>
+            <form id="pokemon-type-filter">
+                <select name="type" class="type-filter">
+                    <option value="">Types</option>
+                </select>
+                <input type="submit" value="Filter by Type"/>
+                
+                <button onClick="window.location.reload();">Reset</button>
+            </form>
+            <section class="form-spacers"></section>
+            <section id="pokedex">
+            </section>
+        </main>  
+    </div>
+
+    <br></br>
+
+    <div class="container">
+        <div class="row pokedex">
+            {% for i in range(number) %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 pokemon">
+                <div class="card pokemon">
+                    <img class="card-img-top" src="{{pokemons[i].img_url}}" alt="pokemon">
+                    <div class="card-body">
+                        <h5 class="card-title">{{pokemons[i].name}}</h5>
+                        <!-- You can add more details here if needed -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
+
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
