@@ -16,13 +16,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.12' # Update the Python version as needed
 
       - name: Install CodeQL CLI
         run: |
           wget https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql-linux64.zip
           unzip -qq codeql-linux64.zip -d codeql
-          export PATH=$(pwd)/codeql:$PATH
+          echo "::add-path::$(pwd)/codeql"
 
       - name: Download CodeQL databases
         run: |
