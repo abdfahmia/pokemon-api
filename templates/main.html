@@ -13,7 +13,7 @@
         /* Background image styles */
         body {
             background-image: url('https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F07%2Fjapanese-theme-park-yomiuriland-pokemon-spotting-0000.jpg');
-            */ background-size: cover;
+            background-size: cover;
             background-position: center;
             background-repeat: repeat;
             height: 100vh;
@@ -41,6 +41,14 @@
         .index-module__logo_container--sUGNH img {
             max-width: 100%;
             max-height: 100%;
+        }
+
+        .filter-heading {
+            color: white;
+            text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
         }
 
         .btn-custom {
@@ -144,27 +152,28 @@
                 <input type="text" id="pokeInput" name="poke" class="form-control" placeholder="Input pokemon name here"
                     onkeyup="toggleButton()">
             </div>
-            <button type="submit" id="searchBtn" class="btn btn-custom" disabled>Search <i
-                    class="fa fa-search"></i></button>
+            <button type="submit" id="searchBtn" class="btn btn-custom" disabled>Search<i class="fa fa-search"></i></button>
         </form>
     </div>
 
-    <br></br>
+    <div class="index-module__banner--1wNKW">
+        <h4><strong>List of Pokémon</strong></h4>
+    </div>
 
     <div class="container">
         <main>
 
             <div class="filteredList">
-                <h3>Filters</h3>
-                <button class="filter-option" data-filter="*" tabindex="-1">All</button>
+                <h3 class="filter-heading">Filters</h3>
+                <button class="btn-custom" data-filter="*" tabindex="-1">All</button>
                 {% set unique_types = [] %}
                 {% for pokemon in pokemons %}
                 {% if pokemon.type not in unique_types %}
                 {% set _ = unique_types.append(pokemon.type) %}
-                <button class="filter-option" data-filter="{{ pokemon.type }}" tabindex="-1">{{ pokemon.type }}</button>
+                <button class="btn-custom" data-filter="{{ pokemon.type }}" tabindex="-1">{{ pokemon.type }}</button>
                 {% endif %}
                 {% endfor %}
-
+                <br></br>
 
                 {% for pokemon in pokemons %}
                 <div class="card mb-3 col-lg-3 {{ pokemon.type }}">
@@ -186,9 +195,9 @@
                     </div>
                 </div>
                 {% endfor %}
-
-
             </div>
+
+            
 
         </main>
     </div>
