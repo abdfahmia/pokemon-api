@@ -22,3 +22,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
+          env:
+          - name: FLASK_APP
+            value: "app.py"
+          command: ["flask", "run", "--host", "0.0.0.0"]  
