@@ -60,10 +60,17 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DO_ACCESS_TOKEN }}
+    
+      - name: Navigate to deployment directory
+        run: cd deployment
 
       - name: Update deployment file
-        run: | 
-          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|abdfahmia/flask-docker:latest|' $GITHUB_WORKSPACE/deployment/deployment.yaml
+        run: |
+              TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|abdfahmia/flask-docker:latest|' deployment.yaml
+              
+      # - name: Update deployment file
+      #   run: | 
+      #     TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|abdfahmia/flask-docker:latest|' $GITHUB_WORKSPACE/deployment/deployment.yaml
 
       - name: Save DigitalOcean kubeconfig with short-lived credentials
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 pokemon-api
