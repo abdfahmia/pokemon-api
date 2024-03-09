@@ -64,7 +64,7 @@ jobs:
               
       - name: Update deployment file
         run: | 
-          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|abdfahmia/flask-docker:latest|' $GITHUB_WORKSPACE/deployment/deployment.yaml 
+          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|abdfahmia/flask-docker:latest|' .\pokemon-api\deployment\deployment.yaml 
           'echo "$GITHUB_WORKSPACE" | base64'
           'echo "$GITHUB_SHA" | base64'
           
