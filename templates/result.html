@@ -114,6 +114,47 @@
     <div class="btn-container">
         <a role="button" class="btn btn-custom" href="/">Back</a>
     </div>
+
+    <div class="btn-container">
+        <button type="button" class="btn btn-custom" id="giveReviewBtn">Give Review</button>
+    </div>
+
+    <!-- Modal for review input -->
+    <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reviewModalLabel">Write Your Review</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="reviewForm" action="/review" method="POST">
+                        <div class="form-group">
+                            <label for="reviewText">Your Review:</label>
+                            <textarea class="form-control" id="reviewText" name="review" rows="3"></textarea>
+                        </div>
+                        <input type="hidden" id="pokemonName" name="pokemon_name" value="{{ poke['name'] }}">
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- JavaScript for modal functionality -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#giveReviewBtn").click(function() {
+                $("#reviewModal").modal("show");
+            });
+        });
+    </script>
     
 
 </body>

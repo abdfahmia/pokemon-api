@@ -20,6 +20,31 @@ def fetch_data():
     
     return results
 
+def insert_review(review_text, pokemon_name, ip_address, user_agent):
+    host = 'localhost'
+    user = 'root'
+    password = 'C8a86wzJ3zsXtTHRGcvFJwT7h'
+    database = 'pokemon'
+
+    try:
+        connection = pymysql.connect(host=host, user=user, password=password, database=database)
+        cursor = connection.cursor()
+
+        # Assuming id is auto-incremented
+        update_query = "UPDATE pokemon_data SET review = %s, ip_address = %s, user_agent = %s WHERE name = %s"
+        cursor.execute(update_query, (review_text, ip_address, user_agent, pokemon_name))
+
+        
+        connection.commit()
+        cursor.close()
+        connection.close()
+        print("Review inserted successfully.")
+    except pymysql.Error as e:
+        print(f"Error inserting review: {e}")
+
+# Call this function when submitting the review
+# insert_review("This is a sample review.")
+
 # Handler in main controller
 @app.route('/', methods=['GET'])
 def main():
@@ -50,6 +75,15 @@ def pokemonData():
         else:
             return render_template('errorPage.html')
 
+# Handler action if /review is triggered
+@app.route('/review', methods=['POST'])
+def pokemonReview():
+    review_text = request.form['review']
+    pokemon_name = request.form['pokemon_name']
+    ip_address = request.remote_addr
+    user_agent = request.user_agent.string
+    insert_review(review_text, pokemon_name, ip_address, user_agent)
+    return render_template("review.html")
 
 
 # Run the Flask
