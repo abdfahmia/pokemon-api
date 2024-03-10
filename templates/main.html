@@ -212,7 +212,7 @@
     </div>
 
     <div class="container">
-        <form action="http://127.0.0.1:5000/result" method="POST" onsubmit="return validateForm()">
+        <form action="http://poke-itcamp.xyz/result" method="POST" onsubmit="return validateForm()">
             <div class="form-group">
                 <input type="text" id="pokeInput" name="poke" class="form-control" placeholder="Input pokemon name here"
                     onkeyup="toggleButton()">
@@ -251,7 +251,7 @@
                             <div class="card-body">
                                 <p class="card-text"><strong>{{ pokemon.name|upper }}</strong></p>
                                 <p class="card-text">Type: {{ pokemon.type }}</p>
-                                <form action="http://127.0.0.1:5000/result" method="POST">
+                                <form action="http://poke-itcamp.xyz/result" method="POST">
                                     <input type="hidden" name="poke" value="{{ pokemon.name }}">
                                     <button type="submit" class="btn btn-custom">See details<i
                                             class="fa fa-search"></i></button>

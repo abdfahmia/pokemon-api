@@ -2,27 +2,45 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pokemon-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: poke-itcamp.xyz
+  - host: poke-itcamp.xyz  # Ganti dengan nama domain Anda
     http:
       paths:
-      - path: /
+      - path: /result
         pathType: Prefix
         backend:
           service:
             name: pokemon-service
             port:
-              number: 80
-      - path: /result
-        pathType: Prefix
-        backend:
-          service:
-            name: pokemon-service-v1
-            port:
-              number: 80
+              number: 80  # Sesuaikan dengan port Service Anda jika berbeda
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: pokemon-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#   - host: poke-itcamp.xyz
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: pokemon-service
+#             port:
+#               number: 80
+#       - path: /result
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: pokemon-service-v1
+#             port:
+#               number: 80
 
       
 

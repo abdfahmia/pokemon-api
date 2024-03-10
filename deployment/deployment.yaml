@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: pokemon-api
-          image: registry.digitalocean.com/abdfahmia/docker-flask:ef0b74e
+          image: registry.digitalocean.com/abdfahmia/docker-flask
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
@@ -37,4 +37,8 @@ spec:
 
           - name: DB_USER
             value: root
+
+          - name: DB_HOST
+            value: 10.245.121.217
+
           command: ["flask", "run", "--host", "0.0.0.0"]
