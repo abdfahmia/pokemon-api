@@ -18,11 +18,23 @@ spec:
     spec:
       containers:
         - name: pokemon-api
-          image: abdfahmia/flask-docker:latest
+          image: registry.digitalocean.com/abdfahmia/docker-flask:ef0b74e
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
           env:
           - name: FLASK_APP
             value: "app.py"
-          command: ["flask", "run", "--host", "0.0.0.0"]  
+              
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pokemon-secret
+                key: db_root_password
+
+          - name: DB_NAME
+            value: pokemon_data
+
+          - name: DB_USER
+            value: root
+          command: ["flask", "run", "--host", "0.0.0.0"]

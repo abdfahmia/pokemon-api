@@ -16,6 +16,15 @@ spec:
             name: pokemon-service
             port:
               number: 80
+      - path: /result
+        pathType: Prefix
+        backend:
+          service:
+            name: pokemon-service-v1
+            port:
+              number: 80
+
+      
 
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
