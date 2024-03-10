@@ -4,7 +4,7 @@ import requests, pymysql
 # Initialization
 app = Flask(__name__)
 
-# Function to establish connection and fetch data
+# Function to establish connection and fetch data, insert_review, get_review
 def fetch_data():
     host = 'localhost'
     user = 'root'
@@ -42,8 +42,24 @@ def insert_review(review_text, pokemon_name, ip_address, user_agent):
     except pymysql.Error as e:
         print(f"Error inserting review: {e}")
 
-# Call this function when submitting the review
-# insert_review("This is a sample review.")
+def get_reviews():
+    host = 'localhost'
+    user = 'root'
+    password = 'C8a86wzJ3zsXtTHRGcvFJwT7h'
+    database = 'pokemon'
+
+    try:
+        connection = pymysql.connect(host=host, user=user, password=password, database=database)
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM pokemon_data")
+        reviews = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return reviews
+    except pymysql.Error as e:
+        print(f"Error inserting review: {e}")
+
+
 
 # Handler in main controller
 @app.route('/', methods=['GET'])
@@ -71,9 +87,12 @@ def pokemonData():
                 'id':id,'height':height,'weight':weight,
                 'name':name,'image':image
             })
-            return render_template('result.html', poke=poke)
+            existing_reviews = get_reviews()  
+          
+            return render_template('result.html', poke=poke, review=existing_reviews)
         else:
             return render_template('errorPage.html')
+
 
 # Handler action if /review is triggered
 @app.route('/review', methods=['POST'])

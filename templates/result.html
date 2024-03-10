@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,7 +13,7 @@
 
     <style>
         body {
-            background-image: url('https://cdn.wallpapersafari.com/31/98/1iNE4T.jpg'); 
+            background-image: url('https://cdn.wallpapersafari.com/31/98/1iNE4T.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -36,7 +37,8 @@
             margin-bottom: 20px;
         }
 
-        th, td {
+        th,
+        td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ccc;
@@ -49,8 +51,15 @@
         .btn-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px; /* Adjust margin-top as needed */
+            margin-top: 20px;
         }
+
+
+        .btn-container a,
+        .btn-container button {
+            margin: 0 5px;
+        }
+
 
 
         .btn-custom {
@@ -73,15 +82,15 @@
         table {
             justify-content: center;
             align-items: center;
-            width: 100%; 
-            height: 200px; 
+            width: 100%;
+            height: 200px;
             margin-left: 200px;
-            max-width: 1000px; 
-            max-height: 300px; 
+            max-width: 1000px;
+            max-height: 300px;
         }
-
     </style>
 </head>
+
 <body>
 
     <div class="container text-center mt-5">
@@ -108,19 +117,39 @@
         <tr>
             <th>Weight</th>
             <td>{{poke['weight']}}</td>
+        <tr>
+            <th>Review</th>
+            <td>
+                <ul>
+                    {% if review %}
+                    {% for review_record in review %}
+                    {% if review_record[1] == poke['name'] %}
+                    {% if review_record[4] is none %}
+                    <li>No review yet</li>
+                    {% else %}
+                    <li>{{ review_record[4] }}</li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <li>No review yet</li>
+                    {% endif %}
+                </ul>
+            </td>
+
+
         </tr>
     </table>
 
     <div class="btn-container">
         <a role="button" class="btn btn-custom" href="/">Back</a>
-    </div>
-
-    <div class="btn-container">
         <button type="button" class="btn btn-custom" id="giveReviewBtn">Give Review</button>
     </div>
 
+
     <!-- Modal for review input -->
-    <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,26 +165,26 @@
                             <textarea class="form-control" id="reviewText" name="review" rows="3"></textarea>
                         </div>
                         <input type="hidden" id="pokemonName" name="pokemon_name" value="{{ poke['name'] }}">
-                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                        <button type="submit" class="btn btn-custom">Submit Review</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
 
     <!-- JavaScript for modal functionality -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#giveReviewBtn").click(function() {
+        $(document).ready(function () {
+            $("#giveReviewBtn").click(function () {
                 $("#reviewModal").modal("show");
             });
         });
     </script>
-    
+
 
 </body>
+
 </html>
