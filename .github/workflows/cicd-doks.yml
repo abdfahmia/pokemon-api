@@ -28,7 +28,7 @@ jobs:
        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/<registry-name>/<repository_name>:'${TAG}'|' $GITHUB_WORKSPACE/deployment/deployment.yaml
     
      - name: Save DigitalOcean kubeconfig with short-lived credentials
-       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 do-sgp1-pokemon-api
+       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 pokemon-api
     
      - name: Deploy to DigitalOcean Kubernetes
        run: kubectl apply -f $GITHUB_WORKSPACE/deployment/deployment.yaml
