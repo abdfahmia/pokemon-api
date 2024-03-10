@@ -83,10 +83,18 @@ def pokemonData():
             weight = pokemon['weight']
             name = pokemon['name']
             image = pokemon['sprites']['front_default']
-            poke = ({
-                'id':id,'height':height,'weight':weight,
-                'name':name,'image':image
-            })
+            types = [poke_type['type']['name'] for poke_type in pokemon['types']]
+
+            if len(types) == 1:
+                poke_type = types[0]
+            else:
+                poke_type = None  # Handle case when there are multiple types
+            
+            poke = {
+                'id': id, 'height': height, 'weight': weight,
+                'name': name, 'image': image, 'type': poke_type
+            }
+
             existing_reviews = get_reviews()  
           
             return render_template('result.html', poke=poke, review=existing_reviews)
