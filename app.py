@@ -1,15 +1,17 @@
 from flask import Flask, render_template, request
+from dotenv import load_dotenv
 import requests, pymysql
+import os
 
 # Initialization
 app = Flask(__name__)
 
 # Function to establish connection and fetch data, insert_review, get_review
 def fetch_data():
-    host = 'localhost'
-    user = 'root'
-    password = 'C8a86wzJ3zsXtTHRGcvFJwT7h'
-    database = 'pokemon'
+    host = os.getenv('DB_HOST')
+    user = os.getenv('DB_USER')
+    password = os.getenv('DB_PASSWORD')
+    database = os.getenv('DB_NAME')
     
     connection = pymysql.connect(host=host, user=user, password=password, database=database)
     cursor = connection.cursor()
@@ -21,10 +23,10 @@ def fetch_data():
     return results
 
 def insert_review(review_text, pokemon_name, ip_address, user_agent):
-    host = 'localhost'
-    user = 'root'
-    password = 'C8a86wzJ3zsXtTHRGcvFJwT7h'
-    database = 'pokemon'
+    host = os.getenv('DB_HOST')
+    user = os.getenv('DB_USER')
+    password = os.getenv('DB_PASSWORD')
+    database = os.getenv('DB_NAME')
 
     try:
         connection = pymysql.connect(host=host, user=user, password=password, database=database)
@@ -43,10 +45,10 @@ def insert_review(review_text, pokemon_name, ip_address, user_agent):
         print(f"Error inserting review: {e}")
 
 def get_reviews():
-    host = 'localhost'
-    user = 'root'
-    password = 'C8a86wzJ3zsXtTHRGcvFJwT7h'
-    database = 'pokemon'
+    host = os.getenv('DB_HOST')
+    user = os.getenv('DB_USER')
+    password = os.getenv('DB_PASSWORD')
+    database = os.getenv('DB_NAME')
 
     try:
         connection = pymysql.connect(host=host, user=user, password=password, database=database)
@@ -60,10 +62,10 @@ def get_reviews():
         print(f"Error inserting review: {e}")
 
 def insert_pokemon_data(id, name, image, poke_type):
-    host = 'localhost'
-    user = 'root'
-    password = 'C8a86wzJ3zsXtTHRGcvFJwT7h'
-    database = 'pokemon'
+    host = os.getenv('DB_HOST')
+    user = os.getenv('DB_USER')
+    password = os.getenv('DB_PASSWORD')
+    database = os.getenv('DB_NAME')
 
     connection = pymysql.connect(host=host, user=user, password=password, database=database)
     cursor = connection.cursor()
