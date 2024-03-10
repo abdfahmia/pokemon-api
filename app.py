@@ -59,6 +59,24 @@ def get_reviews():
     except pymysql.Error as e:
         print(f"Error inserting review: {e}")
 
+def insert_pokemon_data(id, name, image, poke_type):
+    host = 'localhost'
+    user = 'root'
+    password = 'C8a86wzJ3zsXtTHRGcvFJwT7h'
+    database = 'pokemon'
+
+    connection = pymysql.connect(host=host, user=user, password=password, database=database)
+    cursor = connection.cursor()
+    
+    # Insert Pokémon data into the database
+    insert_query = "INSERT INTO pokemon_data (id, name, img_url, type) VALUES (%s, %s, %s, %s)"
+    cursor.execute(insert_query, (id, name, image, poke_type))
+    
+    # Commit changes and close connection
+    connection.commit()
+    cursor.close()
+    connection.close()
+
 
 
 # Handler in main controller
@@ -88,15 +106,21 @@ def pokemonData():
             if len(types) == 1:
                 poke_type = types[0]
             else:
-                poke_type = None  # Handle case when there are multiple types
+                poke_type = "flying"  # Handle case when there are multiple types
             
             poke = {
                 'id': id, 'height': height, 'weight': weight,
                 'name': name, 'image': image, 'type': poke_type
             }
 
-            existing_reviews = get_reviews()  
-          
+            existing_reviews = get_reviews()
+
+            # Check if the Pokémon name is already available in the database
+            if name not in [review[1] for review in existing_reviews]:
+                # If not available, insert the Pokémon data into the database
+                insert_pokemon_data(id, name, image, poke_type) 
+                print("successfully added new pokemon info")
+
             return render_template('result.html', poke=poke, review=existing_reviews)
         else:
             return render_template('errorPage.html')
