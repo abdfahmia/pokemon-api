@@ -24,14 +24,14 @@ i.	Username: Admin
 ii.	Password: zabbix
 
 ### Demo Images
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images1.png?raw=true)
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images2.png?raw=true)
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images3.png?raw=true)
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images4.png?raw=true)
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images5.png?raw=true)
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images6.png?raw=true)
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images7.png?raw=true)
-![alt text](https://github.com/princealvinyusuf/Movies/blob/main/images/images8.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images1.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images2.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images3.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images4.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images5.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images6.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images7.png?raw=true)
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images8.png?raw=true)
 
 
 ## Tech Stack
