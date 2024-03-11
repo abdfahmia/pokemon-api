@@ -1,5 +1,6 @@
 # pokemon-api
 One of mini project for assignment task IT Bootcamp BRI.
+
 Miro Collaboration: https://miro.com/app/board/uXjVNkJV6Zc=/?share_link_id=423220041383
 
 ## Authors
