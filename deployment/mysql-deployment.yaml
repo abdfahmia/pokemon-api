@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-deploy
   labels:
     app: db
 spec:
@@ -23,7 +23,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: pokemon-secret
+              name: pokemon-secret-password
               key: db_root_password
         ports:
         - containerPort: 3306
@@ -41,7 +41,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql-svc
   labels:
     app: db
 spec:
@@ -52,3 +52,20 @@ spec:
   selector:
     app: db
   type: LoadBalancer
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: mysql
+#   annotations:
+#     kubernetes.digitalocean.com/load-balancer-id: "a76f02bb280024c65b6c99a87dfb4b7f"
+#   labels:
+#     app: db
+# spec:
+#   ports:
+#   - port: 3306
+#     protocol: TCP
+#     name: mysql
+#   selector:
+#     app: db
+#   type: LoadBalancer

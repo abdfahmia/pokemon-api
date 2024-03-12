@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: pokemon-api
-          image: registry.digitalocean.com/abdfahmia/docker-flask:latest
+          image: registry.digitalocean.com/abdfahmia/docker-flask:e0886df
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
@@ -29,16 +29,25 @@ spec:
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: pokemon-secret
+                name: pokemon-secret-password
                 key: db_root_password
 
           - name: DB_NAME
-            value: pokemon_data
+            valueFrom:
+              secretKeyRef:
+                name: pokemon-secret-name
+                key: db_name
 
           - name: DB_USER
-            value: root
+            valueFrom:
+              secretKeyRef:
+                name: pokemon-secret-user
+                key: db_user
 
           - name: DB_HOST
-            value: 10.245.121.217
+            valueFrom:
+              secretKeyRef:
+                name: pokemon-secret-host
+                key: db_host
 
           command: ["flask", "run", "--host", "0.0.0.0"]
