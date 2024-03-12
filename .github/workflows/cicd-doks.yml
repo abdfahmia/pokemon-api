@@ -3,7 +3,7 @@ on:
     branches:
       - main
 jobs:
-  build:
+  build-image:
     runs-on: ubuntu-latest
      
     steps:
@@ -25,7 +25,7 @@ jobs:
        run: docker push registry.digitalocean.com/abdfahmia/docker-flask:$(echo $GITHUB_SHA | head -c7)
 
      - name: Update deployment file
-       run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/<registry-name>/<repository_name>:'${TAG}'|' $GITHUB_WORKSPACE/deployment/deployment.yaml
+       run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/abdfahmia/docker-flask:'${TAG}'|' $GITHUB_WORKSPACE/deployment/deployment.yaml
     
      - name: Save DigitalOcean kubeconfig with short-lived credentials
        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 pokemon-api
