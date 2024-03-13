@@ -40,9 +40,11 @@ ii.	Password: zabbix
 **Monitoring Tool**
 - Zabbix
 **CI/CD**
-- 
+- Github Action
 **Cloud**
 - DigitalOcean
+- Container Registry
+**Orchestration & Containerization**
 - Docker
 - Kubernetes
 **Application Server**
