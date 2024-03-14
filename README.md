@@ -15,6 +15,9 @@ Pre-requisite
 ## Environtment Local
 http://localhost:5000/ or http://127.0.0.1:5000/
 
+## System Requirements
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images9.png?raw=true)
+
 ## Demo Public
 ### Demo Link
 API Endpoint (Product Application):
