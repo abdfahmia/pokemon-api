@@ -22,9 +22,8 @@ API Endpoint (Product Application):
   
 API Endpoint (Monitoring Tool):
 - https://itcamp.store/zabbix/
-  
-i.	Username: Admin
-ii.	Password: zabbix
+- Username: Admin
+- Password: zabbix
 
 ### Demo Images
 ![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images1.png?raw=true)
