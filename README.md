@@ -43,12 +43,15 @@ API Endpoint (Monitoring Tool):
   
 **CI/CD**
 - Github Action
+  
 **Cloud**
 - DigitalOcean
 - Container Registry
+  
 **Orchestration & Containerization**
 - Docker
 - Kubernetes
+  
 **Application Server**
 - Flask
 - MySQL
