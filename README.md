@@ -22,6 +22,7 @@ API Endpoint (Product Application):
   
 API Endpoint (Monitoring Tool):
 - https://itcamp.store/zabbix/
+  
 i.	Username: Admin
 ii.	Password: zabbix
 
