@@ -15,14 +15,18 @@ Pre-requisite
 ## Environtment Local
 http://localhost:5000/ or http://127.0.0.1:5000/
 
+## System Requirements
+![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images9.png?raw=true)
+
 ## Demo Public
 ### Demo Link
 API Endpoint (Product Application):
 - http://poke-itcamp.xyz/
+  
 API Endpoint (Monitoring Tool):
 - https://itcamp.store/zabbix/
-i.	Username: Admin
-ii.	Password: zabbix
+- Username: Admin
+- Password: zabbix
 
 ### Demo Images
 ![alt text](https://github.com/abdfahmia/pokemon-api/blob/main/images/images1.png?raw=true)
@@ -39,12 +43,18 @@ ii.	Password: zabbix
 ### Demo Link
 **Monitoring Tool**
 - Zabbix
+  
 **CI/CD**
-- 
+- Github Action
+  
 **Cloud**
 - DigitalOcean
+- Container Registry
+  
+**Orchestration & Containerization**
 - Docker
 - Kubernetes
+  
 **Application Server**
 - Flask
 - MySQL
